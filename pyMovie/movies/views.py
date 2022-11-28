@@ -24,12 +24,19 @@ def detail(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     return render(request, 'movies/detail.html', {'movie': movie})
 
-def rando(request):
-    latest_movie_list = Movie.objects.filter(watched=False)
+def mov_rando(request):
+    latest_movie_list = Movie.objects.filter(watched=False, type='Movie')
     movie = random.choice(latest_movie_list)
     print(latest_movie_list)
     print(movie)
-    return render(request,'movies/rando.html',{'movie': movie})
+    return render(request,'movies/mov-rando.html',{'movie': movie})
+
+def show_rando(request):
+    latest_movie_list = Movie.objects.filter(watched=False, type='Show')
+    movie = random.choice(latest_movie_list)
+    print(len(latest_movie_list))
+    print(movie)
+    return render(request,'movies/mov-rando.html',{'movie': movie})
 
 def add(request):
 	print("add call")

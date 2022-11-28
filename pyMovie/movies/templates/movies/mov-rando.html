@@ -31,16 +31,17 @@
                 
             </div>
         </nav>
-    <h1>{{ movie.title }}</h1>
-<ul>
 
-    <li>{{ movie.watched }}</li>
-    <li>{{ movie.body }}</li>
-    <a href="/movies/watch/{{ movie.id }}/" class="btn btn-primary">Mark as Watched?</a>
+<div class="card">
+    
+    <div class="card-body">
+        <h4 class="card-title">{{ movie.title }} </h4>
+        <p class="card-text">{{ movie.body }} </p>
+    </div>
+  
+</div>
 
-</ul>
+
 </div>
 </body>
 </html>
-
-

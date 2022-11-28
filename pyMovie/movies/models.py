@@ -13,8 +13,9 @@ class Movie(models.Model):
     body = models.CharField(max_length=200, null=True)
     watched = models.BooleanField(default=False)
     pub_date = models.DateTimeField('date published', default=timezone.now())
+    currently_watching = models.BooleanField(default=False)
 
 class MovieForm(ModelForm):
     class Meta:
         model = Movie
-        fields = ['title','type','body','watched']
+        fields = ['title','type','body','watched', 'currently_watching']
