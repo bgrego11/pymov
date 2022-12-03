@@ -1,6 +1,11 @@
 {% extends 'nav.html' %}
         
 {% block content %}
+
+
+
+        
+
 {% if latest_movie_list %}
     <p>
         <h4 class="btn-success" data-bs-toggle="collapse" data-bs-target="#contentId" aria-expanded="false"
@@ -24,7 +29,7 @@
     {% endfor %}
 </div>
 {% else %}
-    <p>No Movies are available.</p>
+    <p>No movies are available.</p>
 {% endif %}
 
 {% if shows %}

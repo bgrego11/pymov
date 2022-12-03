@@ -20,6 +20,8 @@ def index(request):
     }
     return render(request, 'movies/index.html', context)
 
+
+
 def detail(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     return render(request, 'movies/detail.html', {'movie': movie})
@@ -59,3 +61,34 @@ def watched(request, movie_id):
 	movie.watched=True
 	movie.save()
 	return render(request, 'movies/detail.html', {'movie': movie})
+
+def search(request):
+    if request.method == "POST":
+        keyword = request.POST['search']
+        print(keyword)
+        latest_movie_list = Movie.objects.filter(type="Movie",title__icontains=keyword)
+        shows = Movie.objects.filter(type="Show",title__icontains=keyword)
+        context = {
+            'latest_movie_list': latest_movie_list,
+            'shows': shows
+        }
+        return render(request, 'movies/search.html', context)
+    
+def watching(request, movie_id):
+	movie = get_object_or_404(Movie, pk=movie_id)
+	if movie.currently_watching:
+		movie.currently_watching = False
+	else:
+	    movie.currently_watching = True
+
+	movie.save()
+	return render(request, 'movies/detail.html', {'movie': movie})
+
+def we_watching(request):
+    latest_movie_list = Movie.objects.filter(type="Movie", currently_watching=True)
+    shows = Movie.objects.filter(type="Show",currently_watching=True)
+    context = {
+        'latest_movie_list': latest_movie_list,
+        'shows': shows
+    }
+    return render(request, 'movies/index.html', context)
