@@ -3,9 +3,13 @@
 {% block content %}
     <h1>{{ movie.title }}</h1>
 <ul>
-
-    <li>{{ movie.watched }}</li>
-    <li>{{ movie.body }}</li>
+    {% if movie.watched  %}
+    <li>We have watched this</li>
+    {% else %}
+    <li>We have not watched this yet</li>
+    {% endif %}
+    
+    <li>Description: {{ movie.body }}</li>
     <a href="/movies/watch/{{ movie.id }}/" class="btn btn-success">Mark as Watched?</a>
     
     {% if movie.currently_watching %}
