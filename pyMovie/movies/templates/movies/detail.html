@@ -7,7 +7,7 @@
     <li>{{ movie.watched }}</li>
     <li>{{ movie.body }}</li>
     <a href="/movies/watch/{{ movie.id }}/" class="btn btn-success">Mark as Watched?</a>
-
+    
     {% if movie.currently_watching %}
     <a href="/movies/watching/{{ movie.id }}/" class="btn btn-success">No Longer Watching?</a>
     {% else %}
