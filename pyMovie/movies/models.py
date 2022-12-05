@@ -19,4 +19,4 @@ class Movie(models.Model):
 class MovieForm(ModelForm):
     class Meta:
         model = Movie
-        fields = ['title','type','body','watched', 'currently_watching']
+        fields = ['title','type','body','watched', 'currently_watching', 'trailer']
