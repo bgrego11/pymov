@@ -6,7 +6,9 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    
+    dependencies = [
+        ("movies", "0006_movie_currently_watching_alter_movie_pub_date"),
+    ]
 
     operations = [
         migrations.AddField(
