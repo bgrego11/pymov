@@ -14,6 +14,7 @@ class Movie(models.Model):
     watched = models.BooleanField(default=False)
     pub_date = models.DateTimeField('date published', default=timezone.now())
     currently_watching = models.BooleanField(default=False)
+    trailer = models.CharField(max_length=200, null=True, blank=True)
 
 class MovieForm(ModelForm):
     class Meta:
