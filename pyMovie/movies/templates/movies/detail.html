@@ -9,9 +9,11 @@
     <li>We have not watched this yet</li>
     {% endif %}
     {% if movie.trailer  %}
-    <iframe sandbox="allow-same-origin" width="420" height="315"
+    {% comment %} <iframe sandbox="allow-same-origin" width="420" height="315"
     src="{{ movie.trailer }}">
-    </iframe> 
+    </iframe>  {% endcomment %}
+    <embed src="{{ movie.trailer }}"
+        width='560px' height='315px'>
     {% else %}
     
     {% endif %}
