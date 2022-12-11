@@ -2,6 +2,9 @@ from django.db import models
 from django.forms import ModelForm
 from datetime import datetime
 from django.utils import timezone
+from django.dispatch import receiver
+from django.db.models.signals import pre_save
+
 
 now = datetime.now()
 
@@ -15,6 +18,14 @@ class Movie(models.Model):
     pub_date = models.DateTimeField('date published', default=timezone.now())
     currently_watching = models.BooleanField(default=False)
     trailer = models.CharField(max_length=200, null=True, blank=True)
+    
+    
+    def __str__(self):
+        return self.title
+    
+@receiver(pre_save, sender=Movie)
+def Movie_save_handler(sender, instance, *args, **kwargs):
+     instance.trailer = instance.trailer.replace("watch?v=","embed/")
 
 class MovieForm(ModelForm):
     class Meta:
