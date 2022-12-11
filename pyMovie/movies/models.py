@@ -18,6 +18,7 @@ class Movie(models.Model):
     pub_date = models.DateTimeField('date published', default=timezone.now())
     currently_watching = models.BooleanField(default=False)
     trailer = models.CharField(max_length=200, null=True, blank=True)
+    xmas = models.BooleanField(default=False)
     
     
     def __str__(self):
@@ -25,9 +26,11 @@ class Movie(models.Model):
     
 @receiver(pre_save, sender=Movie)
 def Movie_save_handler(sender, instance, *args, **kwargs):
-     instance.trailer = instance.trailer.replace("watch?v=","embed/")
+    sep = "&ab_channel"
+    instance.trailer = instance.trailer.replace("watch?v=","embed/").split(sep,1)[0]
+     
 
 class MovieForm(ModelForm):
     class Meta:
         model = Movie
-        fields = ['title','type','body','watched', 'currently_watching', 'trailer']
+        fields = ['title','type','body','watched', 'currently_watching', 'trailer','xmas']

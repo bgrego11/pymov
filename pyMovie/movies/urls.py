@@ -14,5 +14,7 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('watching/<int:movie_id>/', views.watching, name='watching'),
     path('currently-watching/', views.we_watching, name='we_watching'),
+    path('christmas/', views.xmas, name='xmas'),
+    
 ]
 

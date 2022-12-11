@@ -92,3 +92,10 @@ def we_watching(request):
         'shows': shows
     }
     return render(request, 'movies/index.html', context)
+
+def xmas(request):
+    latest_movie_list = Movie.objects.filter(xmas=True)
+    context = {
+        'latest_movie_list': latest_movie_list,
+    }
+    return render(request, 'movies/index.html', context)
