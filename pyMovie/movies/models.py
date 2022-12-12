@@ -26,8 +26,9 @@ class Movie(models.Model):
     
 @receiver(pre_save, sender=Movie)
 def Movie_save_handler(sender, instance, *args, **kwargs):
-    sep = "&ab_channel"
-    instance.trailer = instance.trailer.replace("watch?v=","embed/").split(sep,1)[0]
+    if instance.trailer:
+        sep = "&ab_channel"
+        instance.trailer = instance.trailer.replace("watch?v=","embed/").split(sep,1)[0]
      
 
 class MovieForm(ModelForm):
